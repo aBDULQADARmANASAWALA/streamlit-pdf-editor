@@ -11,7 +11,7 @@ if uploadedfile is not None:
     writer = PdfWriter(clone_from="stamp.pdf")
 
     try:
-        writer.pages[0].merge_page(reader_pg, over=True)
+        reader_pg.pages[0].merge_page(writer, over=False)
     except Exception as e:
         st.error(f"An error has occured")
 
