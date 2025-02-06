@@ -10,10 +10,7 @@ if uploadedfile is not None:
     reader_pg = PdfReader(uploadedfile).pages[0]
     writer = PdfWriter(clone_from="stamp.pdf")
 
-    try:
-        reader_pg.pages[0].merge_page(writer, over=False)
-    except Exception as e:
-        st.error(f"An error has occured")
+    writer.pages[0].merge_page(reader_pg, over=False)
 
     writer.write(f"{name}_e.pdf")
     with open(f"{name}_e.pdf", "rb") as pdf:
