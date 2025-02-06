@@ -8,7 +8,7 @@ if uploadedfile is not None:
     name = uploadedfile.name.removesuffix(".pdf")
 
     reader_pg = PdfReader(uploadedfile).pages[0]
-    writer = PdfWriter(clone_from="stamp.pdf")
+    writer = PdfWriter(clone_from="stamp.pdf",incremental=True)
 
     writer.pages[0].merge_page(reader_pg, over=False)
 
